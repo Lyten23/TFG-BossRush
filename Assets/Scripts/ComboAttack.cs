@@ -10,6 +10,8 @@ public class ComboAttack : MonoBehaviour
     [SerializeField] private bool canAttack;
 
     [SerializeField] private GameObject[] slashes;
+    [SerializeField] private GameObject[] slashsTwo;
+    [SerializeField] private GameObject[] slashsThree;
 
     private void Start()
     {
@@ -17,6 +19,8 @@ public class ComboAttack : MonoBehaviour
         clicks=0;
         canAttack = true;
         DisableSlashes();
+        DisableSlashes2();
+        DisableSlashes3();
     }
     private void Update()
     {
@@ -44,7 +48,6 @@ public class ComboAttack : MonoBehaviour
         {
             _animator.SetInteger("CountAttack",0);
             canAttack = true;
-            Debug.LogError("Si esta funcionando esta viana");
             clicks = 0;
         }if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Hit1") && clicks>=2)
         {
@@ -67,6 +70,9 @@ public class ComboAttack : MonoBehaviour
         }
     }
 
+    public void ActiveSecondHitVFX() => StartCoroutine(SlashAttack2());
+    public void ActiveThirdHitVFX() => StartCoroutine(SlashAttack3());
+
     #region SlashesLogic
 
     IEnumerator SlashAttack()
@@ -79,11 +85,47 @@ public class ComboAttack : MonoBehaviour
         yield return new WaitForSeconds(1);
         DisableSlashes();
     }
+
+    IEnumerator SlashAttack2()
+    {
+        for (int i = 0; i < slashsTwo.Length; i++)
+        {
+            yield return new WaitForSeconds(0.2f);
+            slashsTwo[i].gameObject.SetActive(true);
+        }
+
+        yield return new WaitForSeconds(1);
+        DisableSlashes2();
+    }
+    IEnumerator SlashAttack3()
+    {
+        for (int i = 0; i < slashsThree.Length; i++)
+        {
+            yield return new WaitForSeconds(0.2f);
+            slashsThree[i].gameObject.SetActive(true);
+        }
+
+        yield return new WaitForSeconds(1);
+        DisableSlashes3();
+    }
     void DisableSlashes()
     {
         for (int i = 0; i < slashes.Length; i++)
         {
             slashes[i].gameObject.SetActive(false);
+        }
+    }void DisableSlashes2()
+    {
+        for (int i = 0; i < slashsTwo.Length; i++)
+        {
+            slashsTwo[i].gameObject.SetActive(false);
+        }
+    }
+    void DisableSlashes3()
+    {
+        for (int i = 0; i < slashsThree.Length; i++)
+        {
+            slashsThree[i].gameObject.SetActive(false);
         }
     }
     #endregion
