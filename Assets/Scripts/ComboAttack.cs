@@ -24,7 +24,7 @@ public class ComboAttack : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Joystick1Button3)||Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3)||Input.GetButtonDown("Fire1"))
         {
             InitialCombo();
         }

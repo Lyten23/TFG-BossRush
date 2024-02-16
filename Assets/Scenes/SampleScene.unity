@@ -1408,7 +1408,7 @@ Camera:
   far clip plane: 1000
   field of view: 40
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3483,7 +3483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc1a22a741894ba588e2757bc5cd754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 7
+  hp: 20
   damage: 1
   animator: {fileID: 1165006857}
   col: {fileID: 1165006859}
@@ -4522,7 +4522,7 @@ MonoBehaviour:
   m_Follow: {fileID: 655239592}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 4
+    OrthographicSize: 8
     NearClipPlane: -16.82
     FarClipPlane: 1000
     Dutch: 0
