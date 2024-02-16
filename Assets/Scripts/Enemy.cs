@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
       if (other.CompareTag("Weapon"))
       {
          hp -= damage;
-         animator.Play("hit");
       }
    }
+   
 }
