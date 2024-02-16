@@ -8,23 +8,22 @@ public class Enemy : MonoBehaviour
    [SerializeField] private int hp;
    [SerializeField] private int damage;
    [SerializeField] private Animator animator;
+   [SerializeField] private Collider col;
 
    private void Update()
    {
       if (hp<=0)
       {
-         Destroy(gameObject);
+         animator.Play("die");
+         col.enabled = false;
       }
    } 
    private void OnTriggerEnter(Collider other)
    {
       if (other.CompareTag("Weapon"))
       {
-         if (animator!=null)
-         {
-            animator.Play("Enemy");
-         }
+         hp -= damage;
+         animator.Play("hit");
       }
-      hp -= damage; 
-    }
+   }
 }
